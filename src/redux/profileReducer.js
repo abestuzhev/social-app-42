@@ -1,20 +1,32 @@
-import {ADD_POST} from "./addPostreducer";
-
-export const UPDATE_POST_TEXT = "UPDATE_POST_TEXT";
+const ADD_POST = "ADD_POST";
+const UPDATE_POST_TEXT = "UPDATE_POST_TEXT";
 
 export const profileReducer = (state, action) => {
-   if(action.type === ADD_POST){
-      state.profilePage.posts.push({
-         id: new Date().getTime(),
-         message: state.profilePage.newPostText
-      });
-      state.profilePage.newPostText = "";
-   } else if(action.type === UPDATE_POST_TEXT){
-      state.profilePage.newPostText = action.text;
+
+   switch (action.type) {
+      case ADD_POST: {
+         state.posts.push({
+            id: new Date().getTime(),
+            message: state.newPostText
+         });
+         state.newPostText = "";
+         return state;
+      }
+
+      case UPDATE_POST_TEXT: {
+         state.newPostText = action.text;
+      }
+
+      default:
+         return state;
    }
-   return state;
+
 };
 
 export const updatePostTextCreator = (text) => {
    return {type: UPDATE_POST_TEXT, text: text};
+};
+
+export const addPostCreator = () => {
+   return {type: ADD_POST};
 };
