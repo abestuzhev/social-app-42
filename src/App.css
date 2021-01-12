@@ -539,3 +539,7 @@ a {
     font-family: "Open Sans", sans-serif;
     resize: none;
 }
+
+.c-textarea--nowrap {
+    white-space: nowrap;
+}

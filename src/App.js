@@ -9,7 +9,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
 function App(props) {
-   console.log("App", props);
+   // console.log("App", props);
    return (
 
       <BrowserRouter>

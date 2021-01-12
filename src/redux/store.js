@@ -1,4 +1,4 @@
-import {profileReducer, UPDATE_POST_TEXT, updatePostTextReducer} from "./profileReducer";
+import {profileReducer} from "./profileReducer";
 import {dialogsReducer} from "./dialogsReducer";
 
 let store = {
@@ -9,8 +9,9 @@ let store = {
             {id:2, name: "John Doe", time: "8:41", text: "Implementing Zoom and Pan in Just 69 Lines of Javascript"}
          ],
          messages: [
-            {id:1, name: "Jennifer Aniston", time: "12:51", text: "Нам не нужно ничего знать про остальную часть вашего технологического стека"},
-            {id:2, name: "John Doe", time: "8:41", text: "Implementing Zoom and Pan in Just 69 Lines of Javascript"}
+            {id:1, interlocutor: true, name: "Mr. Max", time: "12:51", text: "Метод map был добавлен к стандарту ECMA-262 в 5-м издании; поэтому он может отсутствовать в других реализациях стандарта. Вы можете работать с ним, добавив следующий код в начало ваших скриптов, он позволяет использовать map в реализациях, которые не поддерживают этот метод."},
+            {id:2, interlocutor: true, name: "John Doe", time: "8:41", text: "Implementing Zoom and Pan in Just 69 Lines of Javascript"},
+            {id:3, interlocutor: true, name: "John Doe", time: "8:41", text: "Thanks)"}
          ],
          newDialogText: ""
       },

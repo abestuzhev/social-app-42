@@ -1,6 +1,7 @@
 import React from "react";
 import Dialog from "./Dialog";
-import {newDialogTextCreator, updateDialogTextCreator} from "../../redux/dialogsReducer";
+import {newChatTextCreator, updateDialogTextCreator} from "../../redux/dialogsReducer";
+import Message from "./Message";
 
 const Dialogs = (props) => {
 
@@ -11,14 +12,25 @@ const Dialogs = (props) => {
          return <Dialog key={index} dialog={dialog}/>
    });
 
-   const createDialogText = () => {
-      props.dispatch(newDialogTextCreator());
-   }
+   let chatsElements = props.dialogsPage.messages.map( message => {
+      return <Message key={message.id} message={message}/>
+   })
+
+   const createChatText = () => {
+      props.dispatch(newChatTextCreator());
+   };
 
    const updateDialogText = (e) => {
-      console.log("updateDialogText", e.target.value);
       props.dispatch(updateDialogTextCreator(e.target.value));
+
    };
+
+   const handleKeyDown = (e) => {
+      if (e.key === 'Enter') {
+         e.preventDefault();
+         props.dispatch(newChatTextCreator());
+      }
+   }
 
    return (
       <div className="app-dialogs">
@@ -37,45 +49,14 @@ const Dialogs = (props) => {
                   {/*   <span>Выберите чат или создайте новую беседу</span>*/}
                   {/*</div>*/}
                   <div className="chat-messages">
-                     <div className="message-stack message-stack--guest">
-                        <div className="message-bubble">
-                           <div className="message-header">
-                              <span className="message-name">Mr. Max</span>
-                              <span className="message-date">17:56</span>
-                           </div>
-                           <div className="message-text">
-                              <span>Метод map был добавлен к стандарту ECMA-262 в 5-м издании; поэтому он может отсутствовать в других реализациях стандарта. Вы можете работать с ним, добавив следующий код в начало ваших скриптов, он позволяет использовать map в реализациях, которые не поддерживают этот метод.</span>
-                           </div>
-                        </div>
-                     </div>
-                     <div className="message-stack message-stack--you">
-                        <div className="message-bubble">
-                           <div className="message-header">
-                              <span className="message-name">John Doe</span>
-                              <span className="message-date">17:56</span>
-                           </div>
-                           <div className="message-text">
-                              <span>Thanks</span>
-                           </div>
-                        </div>
-                     </div>
-                     <div className="message-stack message-stack--guest">
-                        <div className="message-bubble">
-                           <div className="message-header">
-                              <span className="message-name">Mr. Max</span>
-                              <span className="message-date">17:56</span>
-                           </div>
-                           <div className="message-text">
-                              <span>Да не за что</span>
-                           </div>
-                        </div>
-                     </div>
+
+                     { chatsElements }
 
                   </div>
                </div>
                <div className="chat-footer">
-                  <textarea name="" id="" onChange={ updateDialogText } value={props.newDialogText} cols="20" rows="1" className="c-textarea"></textarea>
-                  <button className="c-btn c-btn--transparent" onClick={ createDialogText }><i className="icon-send"></i></button>
+                  <textarea name="" id="" onChange={ updateDialogText } onKeyDown={ handleKeyDown } value={props.dialogsPage.newDialogText} cols="20" rows="1" className="c-textarea c-textarea--nowrap"></textarea>
+                  <button className="c-btn c-btn--transparent" onClick={ createChatText }><i className="icon-send"></i></button>
                </div>
 
             </div>
