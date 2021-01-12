@@ -9,7 +9,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
 function App(props) {
-   // console.log("props", props);
+   console.log("App", props);
    return (
 
       <BrowserRouter>
@@ -23,7 +23,7 @@ function App(props) {
 
                      <NavBar/>
                      <div className="app-container">
-                        <Route path="/dialogs" render = {() => <Dialogs dialogs = {props.state.dialogsPage.dialogs}/>} />
+                        <Route path="/dialogs" render = {() => <Dialogs dialogsPage = {props.state.dialogsPage} dispatch={props.dispatch}/>} />
                         <Route path="/profile" render = {() => {
                            return <Profile
                               posts = {props.state.profilePage.posts}

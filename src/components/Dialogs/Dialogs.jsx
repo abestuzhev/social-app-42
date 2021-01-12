@@ -4,10 +4,10 @@ import {newDialogTextCreator, updateDialogTextCreator} from "../../redux/dialogs
 
 const Dialogs = (props) => {
 
-   console.log("Dialogs", props);
+   // console.log("Dialogs", props);
 
 
-   let dialogsElements = props.dialogs.map( (dialog, index) => {
+   let dialogsElements = props.dialogsPage.dialogs.map( (dialog, index) => {
          return <Dialog key={index} dialog={dialog}/>
    });
 
@@ -16,6 +16,7 @@ const Dialogs = (props) => {
    }
 
    const updateDialogText = (e) => {
+      console.log("updateDialogText", e.target.value);
       props.dispatch(updateDialogTextCreator(e.target.value));
    };
 
@@ -73,7 +74,7 @@ const Dialogs = (props) => {
                   </div>
                </div>
                <div className="chat-footer">
-                  <div className="c-input" onChange={ updateDialogText } contentEditable="true" suppressContentEditableWarning={true}>${ props.newDialogText }</div>
+                  <textarea name="" id="" onChange={ updateDialogText } value={props.newDialogText} cols="20" rows="1" className="c-textarea"></textarea>
                   <button className="c-btn c-btn--transparent" onClick={ createDialogText }><i className="icon-send"></i></button>
                </div>
 

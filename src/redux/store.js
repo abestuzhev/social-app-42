@@ -6,7 +6,11 @@ let store = {
       dialogsPage: {
          dialogs: [
             {id:1, name: "Jennifer Aniston", time: "12:51", text: "Нам не нужно ничего знать про остальную часть вашего технологического стека"},
-            {id:2, name: "John Doe", time: "8:41",text: "Implementing Zoom and Pan in Just 69 Lines of Javascript"}
+            {id:2, name: "John Doe", time: "8:41", text: "Implementing Zoom and Pan in Just 69 Lines of Javascript"}
+         ],
+         messages: [
+            {id:1, name: "Jennifer Aniston", time: "12:51", text: "Нам не нужно ничего знать про остальную часть вашего технологического стека"},
+            {id:2, name: "John Doe", time: "8:41", text: "Implementing Zoom and Pan in Just 69 Lines of Javascript"}
          ],
          newDialogText: ""
       },
