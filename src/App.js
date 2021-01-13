@@ -1,15 +1,15 @@
 import React from "react";
+import {BrowserRouter, Route} from "react-router-dom";
 import './App.css';
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
-import Profile from "./components/Profile";
+import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
-import {BrowserRouter, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
 function App(props) {
-   // console.log("App", props);
+   console.log("App", props);
    return (
 
       <BrowserRouter>
