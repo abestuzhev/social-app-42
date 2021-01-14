@@ -1,18 +1,21 @@
 import React from "react";
+import Post from "./Post/Post";
 
 const MyPosts = (props) => {
 
-    let messageElements = props.posts.map( (post) => <Post key={post.id} state={post}/>);
+    console.log("MyPosts", props);
+
+    let messageElements = props.profilePage.posts.map( (post) => <Post key={post.id} state={post}/>);
 
     let giveTextarea = React.createRef();
 
-    const createPost = () => {
-        // props.dispatch(addPostCreator());
-        props.dispatch(addPostCreator());
+    const onCreatePost = () => {
+        console.log("createPost")
+        props.createPost();
     };
 
-    const updatePostText = () => {
-        props.dispatch(updatePostTextCreator(giveTextarea.current.value));
+    const onUpdatePostText = () => {
+        props.updatePostText(giveTextarea.current.value);
     };
 
     return (
@@ -20,10 +23,10 @@ const MyPosts = (props) => {
         <div className="profile-posts">
             <div className="profile-posts-area">
                 <div className="profile-posts-area__input">
-                    <textarea name="" id="" onChange={ updatePostText } value={props.newPostText} ref={ giveTextarea } cols="20" rows="6" className="c-textarea"></textarea>
+                    <textarea name="" id="" onChange={ onUpdatePostText } value={props.newPostText} ref={ giveTextarea } cols="20" rows="6" className="c-textarea"></textarea>
                 </div>
                 <div className="c-btn-layout c-btn-layout--right">
-                    <button className="c-btn" onClick={ createPost }>Отправить</button>
+                    <button className="c-btn" onClick={ onCreatePost }>Отправить</button>
                 </div>
             </div>
             <ul className="profile-posts-list">

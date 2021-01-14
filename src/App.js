@@ -1,18 +1,18 @@
 import React from "react";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import './App.css';
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
 function App(props) {
-   console.log("App", props);
+   // console.log("App", props);
    return (
 
-      <BrowserRouter>
+
          <div className="app" id="app">
 
             <Header/>
@@ -23,13 +23,9 @@ function App(props) {
 
                      <NavBar/>
                      <div className="app-container">
-                        <Route path="/dialogs" render = {() => <Dialogs dialogsPage = {props.state.dialogsPage} dispatch={props.dispatch}/>} />
+                        <Route path="/dialogs" render = {() => <DialogsContainer store={props.store}/>} />
                         <Route path="/profile" render = {() => {
-                           return <Profile
-                              posts = {props.state.profilePage.posts}
-                              newPostText = {props.state.profilePage.newPostText}
-                              dispatch={props.dispatch}
-                           />
+                           return <Profile store={props.store} />
                         }}
 
                         />
@@ -42,7 +38,6 @@ function App(props) {
                </div>
             </main>
          </div>
-      </BrowserRouter>
    );
 }
 
