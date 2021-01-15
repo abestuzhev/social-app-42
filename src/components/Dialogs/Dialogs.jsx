@@ -35,11 +35,7 @@ const Dialogs = (props) => {
           </div>
       )
    }
-
-
-
-
-
+   
    const chatMessageElement = props.dialogsPage.messages.length === 0 ? <DefaultElement /> : <ChatsElements />;
 
    const onCreateChatText = () => {

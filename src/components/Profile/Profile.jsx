@@ -4,7 +4,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
 const Profile = (props) => {
-    // console.log("profile", props);
+    console.log("profile", props);
     return (
         <div className="app-profile">
             <ProfileInfo />

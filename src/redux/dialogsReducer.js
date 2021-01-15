@@ -18,21 +18,24 @@ export const dialogsReducer = (state = initialState, action) => {
    switch (action.type) {
       case ADD_CHAT: {
          const dateNow = new Date();
-         const d = {
-            id: dateNow.getTime(),
-            name: "Вы",
-            interlocutor: false,
-            time: `${dateNow.getHours()}:${dateNow.getMinutes()}`,
-            text: state.newDialogText
-         };
-         state.messages.push(d);
-         state.newDialogText = "";
-         return state;
+         return {
+             ...state,
+            messages: [...state.messages, {
+               id: dateNow.getTime(),
+               name: "Вы",
+               interlocutor: false,
+               time: `${dateNow.getHours()}:${dateNow.getMinutes()}`,
+               text: state.newDialogText
+            }],
+            newDialogText: ""
+         }
       }
 
       case UPDATE_DIALOG_TEXT: {
-         state.newDialogText = action.text;
-         return state;
+         return {
+             ...state,
+            newDialogText: action.text
+         }
       }
 
       default:

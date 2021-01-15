@@ -3,14 +3,13 @@ import Post from "./Post/Post";
 
 const MyPosts = (props) => {
 
-    console.log("MyPosts", props);
+    // console.log("MyPosts", props);
 
     let messageElements = props.profilePage.posts.map( (post) => <Post key={post.id} state={post}/>);
 
     let giveTextarea = React.createRef();
 
     const onCreatePost = () => {
-        console.log("createPost")
         props.createPost();
     };
 
