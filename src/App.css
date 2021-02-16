@@ -53,6 +53,13 @@ a {
     right: 0;
 }
 
+.app-header__layout {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .app-header__logo {
     height: 100%;
     display: flex;
