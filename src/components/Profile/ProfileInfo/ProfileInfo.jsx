@@ -1,16 +1,31 @@
 import React from "react";
+import Preloader from "../../common/Preloader";
 
 const ProfileInfo = (props)=> {
+
+    if(!props.profile) {
+        return <Preloader/>
+    }
+
+
     return (
         <div className="c-user-info">
             <div className="c-user-info__img">
-                <img alt="" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShaggyMullet&accessoriesType=Wayfarers&hairColor=Red&facialHairType=BeardLight&facialHairColor=Auburn&clotheType=Hoodie&clotheColor=Blue03&eyeType=Wink&eyebrowType=UpDownNatural&mouthType=Smile&skinColor=Light'
+                {props.profile.photos.small
+                  ? <img src={props.profile.photos.small} alt=""/>
+                  : <img alt="" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShaggyMullet&accessoriesType=Wayfarers&hairColor=Red&facialHairType=BeardLight&facialHairColor=Auburn&clotheType=Hoodie&clotheColor=Blue03&eyeType=Wink&eyebrowType=UpDownNatural&mouthType=Smile&skinColor=Light' />
+                  }
+
                 />
             </div>
             <div className="c-user-info__body">
-                <div className="c-user-info__title">John Doe</div>
+                <div className="c-user-info__title">{props.profile.fullName}</div>
                 <div className="c-user-info__properties">
                     <ul>
+                        <li>
+                            <div className="c-user-info__text">Статус:</div>
+                            <div className="c-user-info__text">{props.profile.aboutMe}</div>
+                        </li>
                         <li>
                             <div className="c-user-info__text">День рождения:</div>
                             <div className="c-user-info__text">12 ноября 1985</div>

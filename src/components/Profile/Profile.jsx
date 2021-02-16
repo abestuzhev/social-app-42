@@ -7,7 +7,7 @@ const Profile = (props) => {
     console.log("profile", props);
     return (
         <div className="app-profile">
-            <ProfileInfo />
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer />
         </div>
 

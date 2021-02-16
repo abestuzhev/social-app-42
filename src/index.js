@@ -19,5 +19,5 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-
+// https://github.com/it-kamasutra/react-way-of-samurai/tree/2cedb1d1f42189f5330236a64d6deeb5e76b0833
 
