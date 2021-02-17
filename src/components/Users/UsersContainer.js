@@ -47,10 +47,20 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         follow: (userId) => {
-            dispatch(follow(userId));
+            userAPI.follow(userId).then( res => {
+                if(res.data.resultCode === 0) {
+                    dispatch(follow(userId));
+                }
+            })
+
         },
         unFollow: (userId) => {
-            dispatch(unFollow(userId));
+            userAPI.unFollow(userId).then( res => {
+                if(res.data.resultCode === 0) {
+                    dispatch(unFollow(userId));
+                }
+            })
+
         },
         setUsers: (users) => {
             dispatch(setUsers(users));
