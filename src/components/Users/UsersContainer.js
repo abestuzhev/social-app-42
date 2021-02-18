@@ -1,9 +1,7 @@
 import {connect} from "react-redux";
 import {
-    follow,
-    unFollow,
     isFetchingUsers,
-    setUsers, toggleFollowInProgress
+    setUsers, unFollowThunk, followThunk
 } from "../../redux/usersReducer";
 import Users from "../Users/Users"
 import React from "react";
@@ -38,41 +36,20 @@ const mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching,
         toggleInProgress: state.usersPage.toggleInProgress
     }
-}
+};
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            toggleFollowInProgress(true)
-            userAPI.follow(userId).then( res => {
-                
-                if(res.data.resultCode === 0) {
-                    dispatch(follow(userId));
-                    toggleFollowInProgress(false)
-                }
-            })
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//
+//         setUsers: (users) => {
+//             dispatch(setUsers(users));
+//         },
+//         isFetchingUsers(isFetching){
+//             dispatch(isFetchingUsers(isFetching))
+//         }
+//     }
+// }
 
-        },
-        unFollow: (userId) => {
-            toggleFollowInProgress(true)
-            userAPI.unFollow(userId).then( res => {
-                if(res.data.resultCode === 0) {
-                    dispatch(unFollow(userId));
-                    toggleFollowInProgress(false)
-                }
-            })
-
-        },
-        setUsers: (users) => {
-            dispatch(setUsers(users));
-        },
-        isFetchingUsers(isFetching){
-            dispatch(isFetchingUsers(isFetching))
-        },
-        toggleFollowInProgress(isFetching){
-            dispatch(toggleFollowInProgress(isFetching))
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserContainer);
+export default connect(mapStateToProps,
+  {followThunk, unFollowThunk, setUsers, isFetchingUsers, }
+  )(UserContainer);

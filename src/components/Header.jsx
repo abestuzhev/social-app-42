@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
-   console.log("header", props);
    return (
       <header className="app-header">
          <div className="app-layout">

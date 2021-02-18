@@ -7,7 +7,7 @@ import App from './App';
 import './index.css';
 
 
-console.log("index", store);
+// console.log("index", store);
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>

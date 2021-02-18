@@ -11,11 +11,12 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import {authAPI} from "./api/api";
 import {connect} from "react-redux";
 import {setAuthData} from "./redux/authReducer";
+import Login from "./components/Login/Login";
 
 class App extends React.Component {
   
   componentDidMount(){
-    console.log("app", this.props);
+    // console.log("app", this.props);
     authAPI.me().then(responce => {
       let {email, id, login} = responce.data.data;      
       if(responce.data.resultCode === 0){
@@ -54,6 +55,10 @@ class App extends React.Component {
                 <Route
                   path="/music"
                   component={Music}/>
+
+                <Route
+                  path="/login"
+                  component={Login}/>
               </div>
             </section>
           </div>

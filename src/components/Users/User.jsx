@@ -1,19 +1,12 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import { toggleFollowInProgress } from "../../redux/usersReducer";
 
 
 
 
-const User = ({user, follow, unFollow, toggleFollowInProgress, toggleInProgress}) => {
-   // console.log("User", props);
-   const followInProgress = () => {
-      follow(user.id)
-   }
+const User = ({user, toggleInProgress, ...props}) => {
 
-   const unFollowInProgress = () => {
-      unFollow(user.id)
-   }
+
    return (
       <li className="users-item">
          <div className="user-card">
@@ -25,7 +18,7 @@ const User = ({user, follow, unFollow, toggleFollowInProgress, toggleInProgress}
                }
             </div>
             <div className="user-card__body">
-               <NavLink to={"/profile/" + user.id }><div className="user-card__name">{user.name}</div></NavLink>  
+               <NavLink to={"/profile/" + user.id }><div className="user-card__name">{user.name}</div></NavLink>
                
                <div className="user-card__status">{user.id}</div>
                {user.followed && <div className="user-card__followed">followed</div>}
@@ -34,8 +27,9 @@ const User = ({user, follow, unFollow, toggleFollowInProgress, toggleInProgress}
 
             <div className="user-card-follow">
                {user.followed
-                  ? <button className="user-card-follow__btn" disabled={toggleInProgress} onClick={unFollowInProgress}><span>unfollow</span></button>
-                  : <button className="user-card-follow__btn" disabled={toggleInProgress} onClick={followInProgress}><span>follow</span></button>
+                  //user-card-follow__btn
+                  ? <button className="" disabled={toggleInProgress.some( id => id === user.id)} onClick={() => props.unFollowThunk(user.id)}><span>unfollow</span></button>
+                  : <button className="" disabled={toggleInProgress.some( id => id === user.id)} onClick={() => props.followThunk(user.id)}><span>follow</span></button>
                }
             </div>
          </div>

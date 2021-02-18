@@ -5,12 +5,9 @@ const Users = (props) => {
     console.log("Users", props);
     const usersElement = props.users.map(u => {
        return <User
-          key={u.id}
-          follow={props.follow}
-          unFollow={props.unFollow}
+         key={u.id}
           user={u}
-          toggleInProgress={props.toggleInProgress}
-          toggleFollowInProgress={props.toggleFollowInProgress}
+          {...props}
        />
     });
 
