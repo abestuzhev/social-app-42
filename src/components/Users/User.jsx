@@ -1,8 +1,19 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+import { toggleFollowInProgress } from "../../redux/usersReducer";
 
-const User = ({user, follow, unFollow}) => {
+
+
+
+const User = ({user, follow, unFollow, toggleFollowInProgress, toggleInProgress}) => {
    // console.log("User", props);
+   const followInProgress = () => {
+      follow(user.id)
+   }
+
+   const unFollowInProgress = () => {
+      unFollow(user.id)
+   }
    return (
       <li className="users-item">
          <div className="user-card">
@@ -23,8 +34,8 @@ const User = ({user, follow, unFollow}) => {
 
             <div className="user-card-follow">
                {user.followed
-                  ? <button className="user-card-follow__btn" onClick={() => unFollow(user.id)}><span>unfollow</span></button>
-                  : <button className="user-card-follow__btn" onClick={() => follow(user.id)}><span>follow</span></button>
+                  ? <button className="user-card-follow__btn" disabled={toggleInProgress} onClick={unFollowInProgress}><span>unfollow</span></button>
+                  : <button className="user-card-follow__btn" disabled={toggleInProgress} onClick={followInProgress}><span>follow</span></button>
                }
             </div>
          </div>

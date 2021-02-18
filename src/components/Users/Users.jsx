@@ -9,6 +9,8 @@ const Users = (props) => {
           follow={props.follow}
           unFollow={props.unFollow}
           user={u}
+          toggleInProgress={props.toggleInProgress}
+          toggleFollowInProgress={props.toggleFollowInProgress}
        />
     });
 

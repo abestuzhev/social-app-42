@@ -4,6 +4,7 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const IS_FETCHING = "IS_FETCHING";
+const TOGGLE_IN_PROGRESS = "TOGGLE_IN_PROGRESS";
 
 const initialState = {
     users: [
@@ -11,7 +12,8 @@ const initialState = {
         // {id: "2", followed:false, name: "Иван", status: "Some text", location: {city: "Санкт-Петербург", country: "Россия"}},
         // {id: "3", followed:true, name: "Roberto", status: "Some text", location: {city: "Рио-де-Жанейро", country: "Бразилия"}}
     ],
-    isFetching: false
+    isFetching: false,
+    toggleInProgress: false
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -53,6 +55,13 @@ export const userReducer = (state = initialState, action) => {
             }
         }
 
+        case TOGGLE_IN_PROGRESS: {
+            return {
+                ...state,
+                toggleInProgress: action.isFetching
+            }
+        }
+
         default:
             return state;
     }
@@ -62,6 +71,7 @@ export const follow = (userId) => ({ type: FOLLOW, userId });
 export const unFollow = (userId) => ({type: UNFOLLOW, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const isFetchingUsers = (isFetching) => ({type: IS_FETCHING, isFetching});
+export const toggleFollowInProgress = (isFetching) => ({type: TOGGLE_IN_PROGRESS, isFetching});
 
 // export const thunkUsersCreator = () => (dispatch) => {
 //     const res = userAPI.getUsers();
