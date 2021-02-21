@@ -74,6 +74,24 @@ a {
     color: black;
 }
 
+.app-header-profile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.app-header-profile__text {
+    margin-right: 4px;
+}
+
+.app-header-profile__text.link {
+    cursor:pointer;
+}
+
+.app-header-profile__text:last-child {
+    margin-right: 0;
+}
+
 .app-page {
     display: flex;
     flex-flow: row nowrap;
@@ -411,7 +429,7 @@ a {
 /*c-user*/
 .c-user-info {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 40px;
@@ -432,12 +450,19 @@ a {
 
 .c-user-info__body {
     padding-left: 30px;
+    width: 100%;
+}
+
+.c-user-info__head {
+    margin-bottom: 16px;
+    border-bottom: 1px solid #e7e8ec;
+    padding-bottom: 10px;
 }
 
 .c-user-info__title {
     font-size: 19px;
     line-height: 24px;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
     font-weight: 700;
 }
 
@@ -466,6 +491,30 @@ a {
 .c-user-info__text {
     font-size: 15px;
     color: black;
+}
+
+.c-user-info__status {
+
+    width: 100% !important;
+    margin-left: -10px;
+}
+
+.c-user-info__status span {
+    display: block;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor:pointer;
+}
+
+.c-user-info__status span:hover {
+    background-color: #f2f3f5;
+    border-color: #d3d9de;
+}
+
+.c-user-info__status span,
+.c-user-info__status input {
+    padding: 8px 10px;
+    font-size: 13px !important;
 }
 
 .users-wrap {
@@ -649,4 +698,12 @@ a {
 
 .c-textarea--nowrap {
     white-space: nowrap;
+}
+
+.c-form {
+
+}
+
+.c-form__item {
+    margin-bottom: 10px;
 }

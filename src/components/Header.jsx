@@ -12,6 +12,7 @@ const Header = (props) => {
                { props.auth.isAuth
                ?  <div className="app-header-profile">
                      <div className="app-header-profile__text" data-id={props.auth.userId}>{props.auth.login}</div>
+                     <div className="app-header-profile__text link" onClick={props.logout} > | Выйти</div>
                   </div>
                :  <NavLink to="/login">Войти</NavLink>
                

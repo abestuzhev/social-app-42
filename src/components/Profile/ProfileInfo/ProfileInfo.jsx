@@ -1,5 +1,6 @@
 import React from "react";
 import Preloader from "../../common/Preloader";
+import {ProfileStatus} from "./ProfileStatus";
 
 const ProfileInfo = (props)=> {
 
@@ -19,13 +20,13 @@ const ProfileInfo = (props)=> {
                 />
             </div>
             <div className="c-user-info__body">
-                <div className="c-user-info__title">{props.profile.fullName}</div>
+                <div className="c-user-info__head">
+                    <div className="c-user-info__title">{props.profile.fullName}</div>
+                    <ProfileStatus status={props.status}/>
+                </div>
                 <div className="c-user-info__properties">
                     <ul>
-                        <li>
-                            <div className="c-user-info__text">Статус:</div>
-                            <div className="c-user-info__text">{props.profile.aboutMe}</div>
-                        </li>
+
                         <li>
                             <div className="c-user-info__text">День рождения:</div>
                             <div className="c-user-info__text">12 ноября 1985</div>

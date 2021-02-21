@@ -8,29 +8,21 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import {authAPI} from "./api/api";
 import {connect} from "react-redux";
-import {setAuthData} from "./redux/authReducer";
+import {getAuthUserData, logout, setAuthData} from "./redux/authReducer";
 import Login from "./components/Login/Login";
 
 class App extends React.Component {
   
   componentDidMount(){
     // console.log("app", this.props);
-    authAPI.me().then(responce => {
-      let {email, id, login} = responce.data.data;      
-      if(responce.data.resultCode === 0){
-        
-        this.props.setAuthData(id, email, login);
-      };
-      
-    })
+    this.props.getAuthUserData();
   }
 
   render(){
     return (
       <div className="app" id="app">
-        <Header auth={this.props.auth}/>
+        <Header auth={this.props.auth} {...this.props}/>
         <main className="app-main">
           <div className="app-layout">
             <section className="app-page">
@@ -42,7 +34,7 @@ class App extends React.Component {
   
                 <Route
                   path="/profile/:userId?"
-                  render={() => <ProfileContainer auth={this.props.auth}/>}/>
+                  render={() => <ProfileContainer {...this.props}/>}/>
   
                 <Route
                   path="/users"
@@ -71,8 +63,9 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+
     auth: state.auth
   }
 }
 
-export default connect(mapStateToProps, {setAuthData})(App);
+export default connect(mapStateToProps, {setAuthData, getAuthUserData, logout})(App);
